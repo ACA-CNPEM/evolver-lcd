@@ -1,54 +1,25 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# ### TEMPERATURA
-
-# In[1]:
-
-
 from PyQt5 import QtWidgets 
 from PyQt5 import QtCore
 import random
 import redis
 r = redis.Redis(host="192.168.0.55")
+import sys
 import pandas as pd
 df = pd.read_excel('Temperaturas.xlsx')
 xl = pd.ExcelFile("Temperaturas.xlsx")
-
-
-# In[2]:
-
 
 verde = "rgb(14, 191, 110);\n"
 amarelo = "rgb(255, 255, 0);\n"
 vermelho = "rgb(255, 63, 68);\n"
 
-
-# In[3]:
-
-
 CORES = [verde, amarelo, vermelho]
 #CORES = ["background-color: rgb(14, 191, 110);", "background-color: rgb(255, 255, 0);", "background-color: rgb(255, 63, 68);"]
-
-
-# In[4]:
-
-
-display(df)
-
-
-# In[5]:
-
 
 SST = df["SST"].values
 EI = df["ERRO INFERIOR"].values
 LI = df["LIMITE INFERIOR"].values
 LS = df["LIMITE SUPERIOR"].values
 ES = df["ERRO SUPERIOR"].values
-
-
-# In[6]:
-
 
 SST[0] = int(r.get("temp_ss_0"))
 SST[1] = int(r.get("temp_ss_1"))
@@ -66,10 +37,6 @@ SST[12] = int(r.get("temp_ss_12"))
 SST[13] = int(r.get("temp_ss_13"))
 SST[14] = int(r.get("temp_ss_14"))
 SST[15] = int(r.get("temp_ss_15"))
-
-
-# In[7]:
-
 
 # se a temperatura da ss1 for menor ou igual ao erro inferior, cor igual a vermelho
 if SST[0] <= EI[0]:
@@ -89,10 +56,6 @@ if SST[0] >= ES[0]:
 print(SST[0])
 print(cor_sst0)
 
-
-# In[8]:
-
-
 if SST[1] <= EI[1]:
     cor_sst1 = vermelho
     
@@ -109,10 +72,6 @@ if SST[1] >= ES[1]:
     cor_sst1 = vermelho
 print(SST[1])
 print(cor_sst1)
-
-
-# In[9]:
-
 
 if SST[2] <= EI[2]:
     cor_sst2 = vermelho
@@ -131,10 +90,6 @@ if SST[2] >= ES[2]:
 print(SST[2])
 print(cor_sst2)
 
-
-# In[10]:
-
-
 if SST[3] <= EI[3]:
     cor_sst3 = vermelho
     
@@ -151,10 +106,6 @@ if SST[3] >= ES[3]:
     cor_sst3 = vermelho
 print(SST[3])
 print(cor_sst3)
-
-
-# In[11]:
-
 
 if SST[4] <= EI[4]:
     cor_sst4 = vermelho
@@ -173,10 +124,6 @@ if SST[4] >= ES[4]:
 print(SST[4])
 print(cor_sst4)
 
-
-# In[12]:
-
-
 if SST[5] <= EI[5]:
     cor_sst5 = vermelho
     
@@ -193,10 +140,6 @@ if SST[5] >= ES[5]:
     cor_sst5 = vermelho
 print(SST[5])
 print(cor_sst5)
-
-
-# In[13]:
-
 
 if SST[6] <= EI[6]:
     cor_sst6 = vermelho
@@ -215,10 +158,6 @@ if SST[6] >= ES[6]:
 print(SST[6])
 print(cor_sst6)
 
-
-# In[14]:
-
-
 if SST[7] <= EI[7]:
     cor_sst7 = vermelho
     
@@ -235,10 +174,6 @@ if SST[7] >= ES[7]:
     cor_sst7 = vermelho
 print(SST[7])
 print(cor_sst7)
-
-
-# In[15]:
-
 
 if SST[8] <= EI[8]:
     cor_sst8 = vermelho
@@ -257,10 +192,6 @@ if SST[8] >= ES[8]:
 print(SST[8])
 print(cor_sst8)
 
-
-# In[16]:
-
-
 if SST[9] <= EI[9]:
     cor_sst9 = vermelho
     
@@ -277,10 +208,6 @@ if SST[9] >= ES[9]:
     cor_sst9 = vermelho
 print(SST[9])
 print(cor_sst9)
-
-
-# In[17]:
-
 
 if SST[10] <= EI[10]:
     cor_sst10 = vermelho
@@ -299,10 +226,6 @@ if SST[10] >= ES[10]:
 print(SST[10])
 print(cor_sst10)
 
-
-# In[18]:
-
-
 if SST[11] <= EI[11]:
     cor_sst11 = vermelho
     
@@ -319,10 +242,6 @@ if SST[11] >= ES[11]:
     cor_sst11 = vermelho
 print(SST[11])
 print(cor_sst11)
-
-
-# In[19]:
-
 
 if SST[12] <= EI[12]:
     cor_sst12 = vermelho
@@ -341,10 +260,6 @@ if SST[12] >= ES[12]:
 print(SST[12])
 print(cor_sst12)
 
-
-# In[20]:
-
-
 if SST[13] <= EI[13]:
     cor_sst13 = vermelho
     
@@ -362,10 +277,6 @@ if SST[13] >= ES[13]:
 print(SST[13])
 print(cor_sst13)
 
-
-# In[21]:
-
-
 if SST[14] <= EI[14]:
     cor_sst14 = vermelho
     
@@ -382,10 +293,6 @@ if SST[14] >= ES[14]:
     cor_sst14 = vermelho
 print(SST[14])
 print(cor_sst14)
-
-
-# In[22]:
-
 
 if SST[15] <= EI[15]:
     cor_sst15 = vermelho
@@ -405,11 +312,6 @@ print(SST[15])
 print(cor_sst15)
 
 
-# ### TURBIDEZ
-
-# In[23]:
-
-
 df2 = pd.read_excel('OD.xlsx')
 #print (df2)
 xl2 = pd.ExcelFile("OD.xlsx")
@@ -418,7 +320,6 @@ EI2 = df2["ERRO INFERIOR"].values
 LI2 = df2["LIMITE INFERIOR"].values
 LS2 = df2["LIMITE SUPERIOR"].values
 ES2 = df2["ERRO SUPERIOR"].values
-display(df2)
 SSOD[0] = int(r.get("od_135_ss_0"))
 SSOD[1] = int(r.get("od_135_ss_1"))
 SSOD[2] = int(r.get("od_135_ss_2"))
@@ -435,9 +336,6 @@ SSOD[12] = int(r.get("od_135_ss_12"))
 SSOD[13] = int(r.get("od_135_ss_13"))
 SSOD[14] = int(r.get("od_135_ss_14"))
 SSOD[15] = int(r.get("od_135_ss_15"))
-
-
-# In[24]:
 
 
 if SSOD[0] <= EI2[0]:
@@ -457,10 +355,6 @@ if SSOD[0] >= ES2[0]:
 print(SSOD[0])
 print(cor_ssod0)
 
-
-# In[25]:
-
-
 if SSOD[1] <= EI2[1]:
     cor_ssod1 = vermelho
     
@@ -478,10 +372,6 @@ if SSOD[1] >= ES2[1]:
 print(SSOD[1])
 print(cor_ssod1)
 
-
-# In[26]:
-
-
 if SSOD[2] <= EI2[2]:
     cor_ssod2 = vermelho
     
@@ -498,10 +388,6 @@ if SSOD[2] >= ES2[2]:
     cor_ssod2 = vermelho
 print(SSOD[2])
 print(cor_ssod2)
-
-
-# In[27]:
-
 
 if SSOD[3] <= EI2[3]:
     cor_ssod3 = vermelho
@@ -521,9 +407,6 @@ print(SSOD[3])
 print(cor_ssod3)
 
 
-# In[28]:
-
-
 if SSOD[4] <= EI2[4]:
     cor_ssod4 = vermelho
     
@@ -540,10 +423,6 @@ if SSOD[4] >= ES2[4]:
     cor_ssod4 = vermelho
 print(SSOD[4])
 print(cor_ssod4)
-
-
-# In[29]:
-
 
 if SSOD[5] <= EI2[5]:
     cor_ssod5 = vermelho
@@ -562,10 +441,6 @@ if SSOD[5] >= ES2[5]:
 print(SSOD[5])
 print(cor_ssod5)
 
-
-# In[30]:
-
-
 if SSOD[6] <= EI2[6]:
     cor_ssod6 = vermelho
     
@@ -582,10 +457,6 @@ if SSOD[6] >= ES2[6]:
     cor_ssod6 = vermelho
 print(SSOD[6])
 print(cor_ssod6)
-
-
-# In[31]:
-
 
 if SSOD[7] <= EI2[7]:
     cor_ssod7 = vermelho
@@ -604,10 +475,6 @@ if SSOD[7] >= ES2[7]:
 print(SSOD[7])
 print(cor_ssod7)
 
-
-# In[32]:
-
-
 if SSOD[8] <= EI2[8]:
     cor_ssod8 = vermelho
     
@@ -624,10 +491,6 @@ if SSOD[8] >= ES2[8]:
     cor_ssod8 = vermelho
 print(SSOD[8])
 print(cor_ssod8)
-
-
-# In[33]:
-
 
 if SSOD[9] <= EI2[9]:
     cor_ssod9 = vermelho
@@ -647,9 +510,6 @@ print(SSOD[9])
 print(cor_ssod9)
 
 
-# In[34]:
-
-
 if SSOD[10] <= EI2[10]:
     cor_ssod10 = vermelho
     
@@ -666,10 +526,6 @@ if SSOD[10] >= ES2[10]:
     cor_ssod10 = vermelho
 print(SSOD[10])
 print(cor_ssod10)
-
-
-# In[35]:
-
 
 if SSOD[11] <= EI2[11]:
     cor_ssod11 = vermelho
@@ -688,10 +544,6 @@ if SSOD[11] >= ES2[11]:
 print(SSOD[11])
 print(cor_ssod11)
 
-
-# In[36]:
-
-
 if SSOD[12] <= EI2[12]:
     cor_ssod12 = vermelho
     
@@ -708,10 +560,6 @@ if SSOD[12] >= ES2[12]:
     cor_ssod12 = vermelho
 print(SSOD[12])
 print(cor_ssod12)
-
-
-# In[37]:
-
 
 if SSOD[13] <= EI2[13]:
     cor_ssod13 = vermelho
@@ -730,10 +578,6 @@ if SSOD[13] >= ES2[13]:
 print(SSOD[13])
 print(cor_ssod13)
 
-
-# In[38]:
-
-
 if SSOD[14] <= EI2[14]:
     cor_ssod14 = vermelho
     
@@ -750,10 +594,6 @@ if SSOD[14] >= ES2[14]:
     cor_ssod14 = vermelho
 print(SSOD[14])
 print(cor_ssod14)
-
-
-# In[39]:
-
 
 if SSOD[15] <= EI2[15]:
     cor_ssod15 = vermelho
@@ -773,33 +613,15 @@ print(SSOD[15])
 print(cor_ssod15)
 
 
-# ### AGITAÇÃO
-
-# In[40]:
-
 
 df3 = pd.read_excel('agit.xlsx')
 xl3 = pd.ExcelFile("agit.xlsx")
-
-
-# In[41]:
-
-
-display(df3)
-
-
-# In[42]:
-
 
 SSS = df3["Ssstir"].values
 EI3 = df3["ERRO INFERIOR"].values
 LI3 = df3["LIMITE INFERIOR"].values
 LS3 = df3["LIMITE SUPERIOR"].values
 ES3 = df3["ERRO SUPERIOR"].values
-
-
-# In[43]:
-
 
 SSS[0] = int(r.get("stir_ss_0"))
 SSS[1] = int(r.get("stir_ss_1"))
@@ -818,10 +640,6 @@ SSS[13] = int(r.get("stir_ss_13"))
 SSS[14] = int(r.get("stir_ss_14"))
 SSS[15] = int(r.get("stir_ss_15"))
 
-
-# In[44]:
-
-
 if SSS[0] <= EI3[0]:
     cor_sss0 = vermelho
     
@@ -838,10 +656,6 @@ if SSS[0] >= ES3[0]:
     cor_sss0 = vermelho
 print(SSS[0])
 print(cor_sss0)
-
-
-# In[45]:
-
 
 if SSS[1] <= EI3[1]:
     cor_sss1 = vermelho
@@ -861,9 +675,6 @@ print(SSS[1])
 print(cor_sss1)
 
 
-# In[46]:
-
-
 if SSS[2] <= EI3[2]:
     cor_sss2 = vermelho
     
@@ -880,10 +691,6 @@ if SSS[2] >= ES3[2]:
     cor_sss2 = vermelho
 print(SSS[2])
 print(cor_sss2)
-
-
-# In[47]:
-
 
 if SSS[3] <= EI3[3]:
     cor_sss3 = vermelho
@@ -902,10 +709,6 @@ if SSS[3] >= ES3[3]:
 print(SSS[3])
 print(cor_sss3)
 
-
-# In[48]:
-
-
 if SSS[4] <= EI3[4]:
     cor_sss4 = vermelho
     
@@ -922,10 +725,6 @@ if SSS[4] >= ES3[4]:
     cor_sss4 = vermelho
 print(SSS[4])
 print(cor_sss4)
-
-
-# In[49]:
-
 
 if SSS[5] <= EI3[5]:
     cor_sss5 = vermelho
@@ -944,10 +743,6 @@ if SSS[5] >= ES3[5]:
 print(SSS[5])
 print(cor_sss5)
 
-
-# In[50]:
-
-
 if SSS[6] <= EI3[6]:
     cor_sss6 = vermelho
     
@@ -964,10 +759,6 @@ if SSS[6] >= ES3[6]:
     cor_sss6 = vermelho
 print(SSS[6])
 print(cor_sss6)
-
-
-# In[51]:
-
 
 if SSS[7] <= EI3[7]:
     cor_sss7 = vermelho
@@ -986,10 +777,6 @@ if SSS[7] >= ES3[7]:
 print(SSS[7])
 print(cor_sss7)
 
-
-# In[52]:
-
-
 if SSS[8] <= EI3[8]:
     cor_sss8 = vermelho
     
@@ -1006,10 +793,6 @@ if SSS[8] >= ES3[8]:
     cor_sss8 = vermelho
 print(SSS[8])
 print(cor_sss8)
-
-
-# In[53]:
-
 
 if SSS[9] <= EI3[9]:
     cor_sss9 = vermelho
@@ -1028,10 +811,6 @@ if SSS[9] >= ES3[9]:
 print(SSS[9])
 print(cor_sss9)
 
-
-# In[54]:
-
-
 if SSS[10] <= EI3[10]:
     cor_sss10 = vermelho
     
@@ -1048,10 +827,6 @@ if SSS[10] >= ES3[10]:
     cor_sss10 = vermelho
 print(SSS[10])
 print(cor_sss10)
-
-
-# In[55]:
-
 
 if SSS[11] <= EI3[11]:
     cor_sss11 = vermelho
@@ -1070,10 +845,6 @@ if SSS[11] >= ES3[11]:
 print(SSS[11])
 print(cor_sss11)
 
-
-# In[56]:
-
-
 if SSS[12] <= EI3[12]:
     cor_sss12 = vermelho
     
@@ -1090,10 +861,6 @@ if SSS[12] >= ES3[12]:
     cor_sss12 = vermelho
 print(SSS[12])
 print(cor_sss12)
-
-
-# In[57]:
-
 
 if SSS[13] <= EI3[13]:
     cor_sss13 = vermelho
@@ -1112,10 +879,6 @@ if SSS[13] >= ES3[13]:
 print(SSS[13])
 print(cor_sss13)
 
-
-# In[58]:
-
-
 if SSS[14] <= EI3[14]:
     cor_sss14 = vermelho
     
@@ -1132,10 +895,6 @@ if SSS[14] >= ES3[14]:
     cor_sss14 = vermelho
 print(SSS[14])
 print(cor_sss14)
-
-
-# In[59]:
-
 
 if SSS[15] <= EI3[15]:
     cor_sss15 = vermelho
@@ -1154,34 +913,14 @@ if SSS[15] >= ES3[15]:
 print(SSS[15])
 print(cor_sss15)
 
-
-# ### VOLUME
-
-# In[60]:
-
-
 df4 = pd.read_excel('volume.xlsx')
 xl4 = pd.ExcelFile("volume.xlsx")
-
-
-# In[61]:
-
-
-display(df4)
-
-
-# In[62]:
-
 
 SSV = df4["SSV"].values
 EI4 = df4["ERRO INFERIOR"].values
 LI4 = df4["LIMITE INFERIOR"].values
 LS4 = df4["LIMITE SUPERIOR"].values
 ES4 = df4["ERRO SUPERIOR"].values
-
-
-# In[63]:
-
 
 SSV[0] = int(r.get("volume_ss_0"))
 SSV[1] = int(r.get("volume_ss_1"))
@@ -1200,10 +939,6 @@ SSV[13] = int(r.get("volume_ss_13"))
 SSV[14] = int(r.get("volume_ss_14"))
 SSV[15] = int(r.get("volume_ss_15"))
 
-
-# In[64]:
-
-
 if SSV[0] <= EI4[0]:
     cor_ssv0 = vermelho
     
@@ -1220,10 +955,6 @@ if SSV[0] >= ES4[0]:
     cor_ssv0 = vermelho
 print(SSV[0])
 print(cor_ssv0)
-
-
-# In[65]:
-
 
 if SSV[1] <= EI4[1]:
     cor_ssv1 = vermelho
@@ -1242,10 +973,6 @@ if SSV[1] >= ES4[1]:
 print(SSV[1])
 print(cor_ssv1)
 
-
-# In[66]:
-
-
 if SSV[2] <= EI4[2]:
     cor_ssv2 = vermelho
     
@@ -1262,10 +989,6 @@ if SSV[2] >= ES4[2]:
     cor_ssv2 = vermelho
 print(SSV[2])
 print(cor_ssv2)
-
-
-# In[67]:
-
 
 if SSV[3] <= EI4[3]:
     cor_ssv3 = vermelho
@@ -1284,10 +1007,6 @@ if SSV[3] >= ES4[3]:
 print(SSV[3])
 print(cor_ssv3)
 
-
-# In[68]:
-
-
 if SSV[4] <= EI4[4]:
     cor_ssv4 = vermelho
     
@@ -1304,10 +1023,6 @@ if SSV[4] >= ES4[4]:
     cor_ssv4 = vermelho
 print(SSV[4])
 print(cor_ssv4)
-
-
-# In[69]:
-
 
 if SSV[5] <= EI4[5]:
     cor_ssv5 = vermelho
@@ -1326,10 +1041,6 @@ if SSV[5] >= ES4[5]:
 print(SSV[5])
 print(cor_ssv5)
 
-
-# In[70]:
-
-
 if SSV[6] <= EI4[6]:
     cor_ssv6 = vermelho
     
@@ -1346,10 +1057,6 @@ if SSV[6] >= ES4[6]:
     cor_ssv6 = vermelho
 print(SSV[6])
 print(cor_ssv6)
-
-
-# In[71]:
-
 
 if SSV[7] <= EI4[7]:
     cor_ssv7 = vermelho
@@ -1368,10 +1075,6 @@ if SSV[7] >= ES4[7]:
 print(SSV[7])
 print(cor_ssv7)
 
-
-# In[72]:
-
-
 if SSV[8] <= EI4[8]:
     cor_ssv8 = vermelho
     
@@ -1388,10 +1091,6 @@ if SSV[8] >= ES4[8]:
     cor_ssv8 = vermelho
 print(SSV[8])
 print(cor_ssv8)
-
-
-# In[73]:
-
 
 if SSV[9] <= EI4[9]:
     cor_ssv9 = vermelho
@@ -1410,10 +1109,6 @@ if SSV[9] >= ES4[9]:
 print(SSV[9])
 print(cor_ssv9)
 
-
-# In[74]:
-
-
 if SSV[10] <= EI4[10]:
     cor_ssv10 = vermelho
     
@@ -1430,10 +1125,6 @@ if SSV[10] >= ES4[10]:
     cor_ssv10 = vermelho
 print(SSV[10])
 print(cor_ssv10)
-
-
-# In[75]:
-
 
 if SSV[11] <= EI4[11]:
     cor_ssv11 = vermelho
@@ -1452,10 +1143,6 @@ if SSV[11] >= ES4[11]:
 print(SSV[11])
 print(cor_ssv11)
 
-
-# In[76]:
-
-
 if SSV[12] <= EI4[12]:
     cor_ssv12 = vermelho
     
@@ -1472,10 +1159,6 @@ if SSV[12] >= ES4[12]:
     cor_ssv12 = vermelho
 print(SSV[12])
 print(cor_ssv12)
-
-
-# In[77]:
-
 
 if SSV[13] <= EI4[13]:
     cor_ssv13 = vermelho
@@ -1494,10 +1177,6 @@ if SSV[13] >= ES4[13]:
 print(SSV[13])
 print(cor_ssv13)
 
-
-# In[78]:
-
-
 if SSV[14] <= EI4[14]:
     cor_ssv14 = vermelho
     
@@ -1514,10 +1193,6 @@ if SSV[14] >= ES4[14]:
     cor_ssv14 = vermelho
 print(SSV[14])
 print(cor_ssv14)
-
-
-# In[79]:
-
 
 if SSV[15] <= EI4[15]:
     cor_ssv15 = vermelho
@@ -1536,31 +1211,8 @@ if SSV[15] >= ES4[15]:
 print(SSV[15])
 print(cor_ssv15)
 
-
-# ### TIMESTAMP
-
-# In[80]:
-
-
-#df5 = pd.read_excel('time.xlsx')
-#xl5 = pd.ExcelFile("time.xlsx")
-
-
-# In[81]:
-
-
-#display(df5)
-
-
-# In[82]:
-
-
 TIME = int(r.get("timestamp"))
 print(TIME)
-
-
-# In[83]:
-
 
 # -*- coding: utf-8 -*-
 
@@ -2619,13 +2271,6 @@ class Ui_MainWindow(object):
         self.label_72.setText(_translate("MainWindow", "{}".format(SSS[7])))
         self.label_73.setText(_translate("MainWindow", "{}".format(SSV[7])))
 
-        
-################################ FIM DO CODIGO CONVERTIDO COM PYUIC5 #################################
-# apos instalar py-redis no seu sistema
-# importe o redis
-import redis
-import sys
-
 from PyQt5.QtWidgets import (
     QApplication, QDialog, QMainWindow, QMessageBox
 )
@@ -2645,32 +2290,9 @@ class Window(QMainWindow, Ui_MainWindow):
     def conta_click(self):
         global contador
         contador=contador+1
-###############################################################################################
-# conecto ao redis para teste
-        r = redis.Redis(host="192.168.0.55") #no caso da rasp, utilizar o IP "192.168.0.55"
-# uso o redis para salvar a variavale contador provisoriamente soh para teste
-        r.set("conta_redis", contador)
-# leio o valor de contador de volta
-        contador=int(r.get("conta_redis"))
-# fecho o redis
-        r.close()
-# fim do teste com o redis
-###############################################################################################
-      #  self.label.setText(str(contador))
- #       if (contador>10):
-   #         self.label.setStyleSheet("color: rgb(255, 255, 0);")
-    #    if (contador>20):
-     #       self.label.setStyleSheet("color: rgb(255, 0, 0);")
- #       print("teste",contador)
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     win = Window()
     win.show()
     sys.exit(app.exec())
-
-
-# In[ ]:
-
-
-
-
